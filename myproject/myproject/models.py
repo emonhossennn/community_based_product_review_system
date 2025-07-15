@@ -4,9 +4,22 @@ from django.utils import timezone
 from django.utils.timesince import timesince
 
 
+class CanonicalProduct(models.Model):
+    canonical_name = models.CharField(max_length=200, unique=True)
+    description = models.TextField(blank=True)
+    # Add more fields as needed (e.g., brand, category, attributes)
+
+    def __str__(self):
+        return self.canonical_name
+
+    class Meta:
+        ordering = ['canonical_name']
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    canonical = models.ForeignKey(CanonicalProduct, on_delete=models.SET_NULL, null=True, blank=True, related_name='listings')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

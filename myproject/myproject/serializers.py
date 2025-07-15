@@ -1,11 +1,19 @@
 from rest_framework import serializers
-from .models import Product, Comment
+from .models import Product, Comment, CanonicalProduct
+
+
+class CanonicalProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CanonicalProduct
+        fields = ['id', 'canonical_name', 'description']
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    canonical = CanonicalProductSerializer(read_only=True)
+
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description', 'created_at', 'updated_at']
+        fields = ['id', 'name', 'description', 'canonical', 'created_at', 'updated_at']
 
 
 class CommentSerializer(serializers.ModelSerializer):
