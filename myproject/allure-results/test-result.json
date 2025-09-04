@@ -1,0 +1,40 @@
+{
+  "uuid": "test-uuid-123",
+  "name": "Product API Tests",
+  "fullName": "tests.test_working.TestProductAPI",
+  "status": "passed",
+  "start": 1640995200000,
+  "stop": 1640995205000,
+  "steps": [
+    {
+      "name": "Make GET request to products endpoint",
+      "status": "passed",
+      "start": 1640995201000,
+      "stop": 1640995202000
+    },
+    {
+      "name": "Verify response status and data",
+      "status": "passed",
+      "start": 1640995202000,
+      "stop": 1640995203000
+    }
+  ],
+  "labels": [
+    {
+      "name": "epic",
+      "value": "Product Review System"
+    },
+    {
+      "name": "feature",
+      "value": "API Testing"
+    },
+    {
+      "name": "story",
+      "value": "Product Listing"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ]
+}
