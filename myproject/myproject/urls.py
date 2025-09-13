@@ -18,16 +18,30 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import ProductViewSet, CommentViewSet
+from .views import (
+    ProductViewSet, CommentViewSet, ReviewViewSet, CategoryViewSet,
+    UserProfileViewSet, TrendingProductViewSet, dashboard_data,
+    user_dashboard, product_analytics, analyze_text_sentiment
+)
 
 # Create a router and register our viewsets with it
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'comments', CommentViewSet, basename='comment')
+router.register(r'reviews', ReviewViewSet)
+router.register(r'categories', CategoryViewSet)
+router.register(r'user-profiles', UserProfileViewSet)
+router.register(r'trending-products', TrendingProductViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    
+    # Analytics endpoints
+    path('api/dashboard/', dashboard_data, name='dashboard-data'),
+    path('api/user-dashboard/', user_dashboard, name='user-dashboard'),
+    path('api/products/<int:product_id>/analytics/', product_analytics, name='product-analytics'),
+    path('api/sentiment-analysis/', analyze_text_sentiment, name='sentiment-analysis'),
 ]
