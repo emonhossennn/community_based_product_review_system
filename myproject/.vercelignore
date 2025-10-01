@@ -1,0 +1,43 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Local SQLite database
+db.sqlite3
+*.sqlite3
+
+# Test files
+tests/
+test_*.py
+*_tests.py
+pytest.ini
+allure-results/
+test_report.html
+
+# Documentation
+docs/
+*.md
+README.md
+WARP.md
+
+# Development files
+.env
+.vscode
+.idea
