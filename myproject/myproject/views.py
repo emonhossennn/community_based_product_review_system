@@ -1,5 +1,6 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action, api_view, permission_classes
+from django.http import JsonResponse
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.db.models import Avg, Count, Q
@@ -325,3 +326,14 @@ def product_analytics(request, product_id):
         
     except Product.DoesNotExist:
         return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+def health_check(request):
+    """
+    Simple health check endpoint that doesn't require authentication
+    """
+    return JsonResponse({
+        'status': 'OK',
+        'message': 'Django API is running on Vercel!',
+        'timestamp': timezone.now().isoformat()
+    })

@@ -21,7 +21,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from .views import (
     ProductViewSet, CommentViewSet, ReviewViewSet, CategoryViewSet,
     UserProfileViewSet, TrendingProductViewSet, dashboard_data,
-    user_dashboard, product_analytics, analyze_text_sentiment
+    user_dashboard, product_analytics, analyze_text_sentiment, health_check
 )
 
 # Create a router and register our viewsets with it
@@ -44,4 +44,5 @@ urlpatterns = [
     path('api/user-dashboard/', user_dashboard, name='user-dashboard'),
     path('api/products/<int:product_id>/analytics/', product_analytics, name='product-analytics'),
     path('api/sentiment-analysis/', analyze_text_sentiment, name='sentiment-analysis'),
+    path('health/', health_check, name='health-check'),
 ]
